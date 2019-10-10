@@ -24,24 +24,30 @@
                 android:id="@+id/clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="C"
                 android:text="C" />
 
             <Button
                 android:id="@+id/backspace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="back"
                 android:text="←" />
 
             <Button
                 android:id="@+id/percentage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="%"
                 android:text="%" />
 
             <Button
                 android:id="@+id/division"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="/"
                 android:text="/" />
         </TableRow>
 
@@ -78,6 +84,8 @@
                 android:id="@+id/multiplication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="*"
                 android:text="*" />
         </TableRow>
 
@@ -114,6 +122,8 @@
                 android:id="@+id/substraction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="-"
                 android:text="-" />
 
         </TableRow>
@@ -151,14 +161,14 @@
                 android:id="@+id/addition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="+"
                 android:text="+" />
         </TableRow>
 
         <TableRow
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:onClick="numberStroke"
-            android:tag="1"
             android:layout_weight="1">
 
             <Button
@@ -179,12 +189,14 @@
                 android:id="@+id/dot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="."
                 android:text="." />
 
             <Button
                 android:id="@+id/equal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="="
                 android:text="=" />
         </TableRow>
 
@@ -211,16 +223,16 @@
 
         <TextView
             android:id="@+id/operator"
-            android:layout_width="34dp"
-            android:layout_height="0dp"
+            android:layout_width="103dp"
+            android:layout_height="45dp"
             android:layout_marginStart="180dp"
-            android:background="@null"
             android:layout_marginLeft="180dp"
             android:layout_marginBottom="55dp"
-            android:textSize="40sp"
+            android:background="@null"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:inputType="none"
+            android:textSize="40sp"
             app:layout_constraintBottom_toTopOf="@+id/number1"
             app:layout_constraintStart_toStartOf="@+id/number2"
             app:layout_constraintTop_toBottomOf="@+id/number2" />
