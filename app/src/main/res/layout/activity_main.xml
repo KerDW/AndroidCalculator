@@ -24,6 +24,7 @@
                 android:id="@+id/clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="specialChars"
                 android:tag="C"
                 android:text="C" />
 
@@ -31,6 +32,7 @@
                 android:id="@+id/backspace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="specialChars"
                 android:tag="back"
                 android:text="←" />
 
@@ -38,7 +40,7 @@
                 android:id="@+id/percentage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="addOperator"
+                android:onClick="specialChars"
                 android:tag="%"
                 android:text="%" />
 
@@ -190,6 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:tag="."
+                android:onClick="specialChars"
                 android:text="." />
 
             <Button
@@ -197,6 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:tag="="
+                android:onClick="specialChars"
                 android:text="=" />
         </TableRow>
 

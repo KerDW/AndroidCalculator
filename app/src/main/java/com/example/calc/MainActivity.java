@@ -45,6 +45,35 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void specialChars(View v){
+
+        TextView  op = (TextView) findViewById(R.id.operator);
+        EditText number1 = (EditText) findViewById(R.id.number1);
+        EditText  number2 = (EditText) findViewById(R.id.number2);
+        EditText  result = (EditText) findViewById(R.id.result);
+
+        EditText currentNumber = op.getText() == "" ? number1 : number2;
+
+        switch(v.getTag().toString()){
+            case ".":
+                currentNumber.setText(Double.toString(Double.parseDouble(number1.getText().toString())/10));
+                break;
+            case "%":
+                currentNumber.setText(Double.toString(Double.parseDouble(number1.getText().toString())/100));
+                break;
+            case "C":
+                result.setText("");
+                number1.setText("");
+                number2.setText("");
+                op.setText("");
+            case "=":
+
+
+
+
+        }
+    }
+
     public void numberStroke(View v){
 
         String press = v.getTag().toString();
