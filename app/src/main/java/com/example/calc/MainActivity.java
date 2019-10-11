@@ -19,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
     public void addOperator (View v){
 
         TextView  op = (TextView) findViewById(R.id.operator);
+        EditText  number1 = (EditText) findViewById(R.id.number1);
+        EditText  number2 = (EditText) findViewById(R.id.number2);
+        EditText  result = (EditText) findViewById(R.id.result);
+
+        if(op.getText() != ""){
+            number1.setText(result.getText());
+            number2.setText("");
+        }
 
         switch(v.getTag().toString()){
             case "+":
@@ -52,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
             if(number1.getText() == null){
                 number1.setText("0");
             }
+
             number2.setText(number2.getText().toString()+press);
+            result.setText("");
 
             switch(op.getText().toString()){
                 case "*":
@@ -69,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            op.setText("");
-            number2.setText("");
-            number1.setText(result.getText());
+
 
 
         }
