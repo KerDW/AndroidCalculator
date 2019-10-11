@@ -49,22 +49,29 @@ public class MainActivity extends AppCompatActivity {
             number1.setText(number1.getText().toString()+press);
             result.setText(number1.getText());
         } else {
+            if(number1.getText() == null){
+                number1.setText("0");
+            }
             number2.setText(number2.getText().toString()+press);
 
-            switch(op.getTag().toString()){
+            switch(op.getText().toString()){
                 case "*":
-                    result.setText(Integer.parseInt(number1.getText().toString())*Integer.parseInt(number2.getText().toString()));
+                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())*Double.parseDouble(number2.getText().toString())));
                     break;
                 case "/":
-                    result.setText(Integer.parseInt(number1.getText().toString())/Integer.parseInt(number2.getText().toString()));
+                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())/Double.parseDouble(number2.getText().toString())));
                     break;
                 case "-":
-                    result.setText(Integer.parseInt(number1.getText().toString())-Integer.parseInt(number2.getText().toString()));
+                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())-Double.parseDouble(number2.getText().toString())));
                     break;
                  case "+":
-                    result.setText(Integer.parseInt(number1.getText().toString())+Integer.parseInt(number2.getText().toString()));
+                     result.setText(Double.toString(Double.parseDouble(number1.getText().toString())+Double.parseDouble(number2.getText().toString())));
                     break;
             }
+
+            op.setText("");
+            number2.setText("");
+            number1.setText(result.getText());
 
 
         }
