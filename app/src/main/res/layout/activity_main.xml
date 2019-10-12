@@ -13,8 +13,7 @@
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TableRow
             android:layout_width="0dp"
@@ -25,24 +24,32 @@
                 android:id="@+id/clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="specialChars"
+                android:tag="C"
                 android:text="C" />
 
             <Button
                 android:id="@+id/backspace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="specialChars"
+                android:tag="back"
                 android:text="←" />
 
             <Button
                 android:id="@+id/percentage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="specialChars"
+                android:tag="%"
                 android:text="%" />
 
             <Button
                 android:id="@+id/division"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="/"
                 android:text="/" />
         </TableRow>
 
@@ -55,24 +62,32 @@
                 android:id="@+id/n7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="7"
                 android:text="7" />
 
             <Button
                 android:id="@+id/n8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="8"
                 android:text="8" />
 
             <Button
                 android:id="@+id/n9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="9"
                 android:text="9" />
 
             <Button
                 android:id="@+id/multiplication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="*"
                 android:text="*" />
         </TableRow>
 
@@ -85,25 +100,34 @@
                 android:id="@+id/n4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="4"
                 android:text="4" />
 
             <Button
                 android:id="@+id/n5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="5"
                 android:text="5" />
 
             <Button
                 android:id="@+id/n6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="6"
                 android:text="6" />
 
             <Button
                 android:id="@+id/substraction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="-"
                 android:text="-" />
+
         </TableRow>
 
         <TableRow
@@ -115,24 +139,32 @@
                 android:id="@+id/n1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="1"
                 android:text="1" />
 
             <Button
                 android:id="@+id/n2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="2"
                 android:text="2" />
 
             <Button
                 android:id="@+id/n3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="3"
                 android:text="3" />
 
             <Button
                 android:id="@+id/addition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addOperator"
+                android:tag="+"
                 android:text="+" />
         </TableRow>
 
@@ -151,59 +183,97 @@
                 android:id="@+id/n0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="numberStroke"
+                android:tag="0"
                 android:text="0" />
 
             <Button
                 android:id="@+id/dot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="."
+                android:onClick="specialChars"
                 android:text="." />
 
             <Button
                 android:id="@+id/equal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="="
+                android:onClick="specialChars"
                 android:text="=" />
         </TableRow>
 
     </TableLayout>
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="438dp"
-        android:layout_marginBottom="34dp"
-        android:hint="0"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/number1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="85dp"
-        android:layout_marginRight="85dp"
-        android:layout_marginBottom="31dp"
-        android:hint="0"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintEnd_toEndOf="@+id/tableLayout" />
+        <EditText
+            android:id="@+id/number1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="282dp"
+            android:background="@null"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="0"
+            android:inputType="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/result"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.912" />
 
-    <TextView
-        android:id="@+id/number2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="318dp"
-        tools:layout_editor_absoluteY="343dp" />
+        <TextView
+            android:id="@+id/operator"
+            android:layout_width="103dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="296dp"
+            android:background="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="none"
+            android:textSize="40sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/operator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="390dp" />
+        <EditText
+            android:id="@+id/number2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="224dp"
+            android:layout_marginBottom="51dp"
+            android:background="@null"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="none"
+            app:layout_constraintBottom_toTopOf="@+id/operator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/result"
+            android:layout_width="188dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="272dp"
+            android:background="@null"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="0"
+            android:inputType="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
