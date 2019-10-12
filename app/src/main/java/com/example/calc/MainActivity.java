@@ -16,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    private boolean isEmpty(EditText etText) {
+        return etText.getText().toString().trim().length() == 0;
+    }
+
     public void addOperator (View v){
 
         TextView  op = (TextView) findViewById(R.id.operator);
@@ -59,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 currentNumber.setText(Double.toString(Double.parseDouble(number1.getText().toString())/10));
                 break;
             case "%":
-                currentNumber.setText(Double.toString(Double.parseDouble(number1.getText().toString())/100));
+                if(!isEmpty(currentNumber))
+                    currentNumber.setText(Double.toString(Double.parseDouble(number1.getText().toString())/100));
                 break;
             case "C":
                 result.setText("");
@@ -67,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 number2.setText("");
                 op.setText("");
             case "=":
+                number1.setText(result.getText());
+                op.setText("");
+                number2.setText("");
+                break;
 
 
 
@@ -86,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             number1.setText(number1.getText().toString()+press);
             result.setText(number1.getText());
         } else {
-            if(number1.getText() == null){
+            if(isEmpty(number1)){
                 number1.setText("0");
             }
 
