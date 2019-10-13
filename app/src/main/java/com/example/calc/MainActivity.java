@@ -80,8 +80,11 @@ public class MainActivity extends AppCompatActivity {
             case "back":
                 if (isEmpty(number2) && currentNumber == number2)
                     op.setText("");
-                if(currentNumber.getText().toString().length()>0)
+                if(currentNumber.getText().toString().length()>0 && android.text.TextUtils.isDigitsOnly(currentNumber.getText().toString()))
                     currentNumber.setText(currentNumber.getText().toString().substring(0, currentNumber.getText().toString().length() - 1));
+                else
+                    currentNumber.setText("");
+                numberStroke(op);
                 break;
 
 
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void numberStroke(View v){
 
-        String press = v.getTag().toString();
+        String press = v.getTag() != null ? v.getTag().toString() : "";
         EditText number1 = (EditText) findViewById(R.id.number1);
         EditText  number2 = (EditText) findViewById(R.id.number2);
         EditText  result = (EditText) findViewById(R.id.result);
