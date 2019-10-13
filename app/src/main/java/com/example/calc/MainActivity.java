@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             case ".":
                 if(!isEmpty(currentNumber) && !currentNumber.getText().toString().contains("."))
                     currentNumber.setText(currentNumber.getText().toString()+".");
+                else
+                    currentNumber.setText("0.");
                 break;
             case "%":
                 if(!isEmpty(currentNumber))
