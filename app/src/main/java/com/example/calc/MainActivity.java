@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             case ".":
                 if(!isEmpty(currentNumber) && !currentNumber.getText().toString().contains("."))
                     currentNumber.setText(currentNumber.getText().toString()+".");
+                else
+                    currentNumber.setText("0.");
                 break;
             case "%":
                 if(!isEmpty(currentNumber))
@@ -80,15 +82,12 @@ public class MainActivity extends AppCompatActivity {
             case "back":
                 if (isEmpty(number2) && currentNumber == number2)
                     op.setText("");
-                if(currentNumber.getText().toString().length()>0 && android.text.TextUtils.isDigitsOnly(currentNumber.getText().toString()))
+                if(currentNumber.getText().toString().length()>0 && currentNumber.getText().toString().matches("\\d+(?:\\.\\d+)?.?"))
                     currentNumber.setText(currentNumber.getText().toString().substring(0, currentNumber.getText().toString().length() - 1));
                 else
                     currentNumber.setText("");
                 numberStroke(op);
                 break;
-
-
-
         }
     }
 
@@ -111,28 +110,28 @@ public class MainActivity extends AppCompatActivity {
             number2.setText(number2.getText().toString()+press);
             result.setText("");
 
-            switch(op.getText().toString()){
-                case "*":
-                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())*Double.parseDouble(number2.getText().toString())));
-                    break;
-                case "/":
-                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())/Double.parseDouble(number2.getText().toString())));
-                    break;
-                case "-":
-                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())-Double.parseDouble(number2.getText().toString())));
-                    break;
-                 case "+":
-                     result.setText(Double.toString(Double.parseDouble(number1.getText().toString())+Double.parseDouble(number2.getText().toString())));
-                    break;
+            if(!isEmpty(number2)) {
+                switch (op.getText().toString()) {
+                    case "*":
+                        result.setText(Double.toString(Double.parseDouble(number1.getText().toString()) * Double.parseDouble(number2.getText().toString())));
+                        break;
+                    case "/":
+                        result.setText(Double.toString(Double.parseDouble(number1.getText().toString()) / Double.parseDouble(number2.getText().toString())));
+                        break;
+                    case "-":
+                        result.setText(Double.toString(Double.parseDouble(number1.getText().toString()) - Double.parseDouble(number2.getText().toString())));
+                        break;
+                    case "+":
+                        result.setText(Double.toString(Double.parseDouble(number1.getText().toString()) + Double.parseDouble(number2.getText().toString())));
+                        break;
+                }
+            } else {
+
+                result.setText(number1.getText().toString());
+
             }
 
-
-
-
         }
-
-
-
 
     }
 
