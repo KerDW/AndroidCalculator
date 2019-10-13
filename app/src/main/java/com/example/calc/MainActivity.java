@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     currentNumber.setText(currentNumber.getText().toString().substring(0, currentNumber.getText().toString().length() - 1));
                 else
                     currentNumber.setText("");
+                numberStroke(op);
                 break;
 
 
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void numberStroke(View v){
 
-        String press = v.getTag().toString();
+        String press = v.getTag() != null ? v.getTag().toString() : "";
         EditText number1 = (EditText) findViewById(R.id.number1);
         EditText  number2 = (EditText) findViewById(R.id.number2);
         EditText  result = (EditText) findViewById(R.id.result);
