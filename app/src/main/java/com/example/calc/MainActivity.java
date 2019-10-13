@@ -82,15 +82,12 @@ public class MainActivity extends AppCompatActivity {
             case "back":
                 if (isEmpty(number2) && currentNumber == number2)
                     op.setText("");
-                if(currentNumber.getText().toString().length()>0 && android.text.TextUtils.isDigitsOnly(currentNumber.getText().toString()))
+                if(currentNumber.getText().toString().length()>0 && currentNumber.getText().toString().matches("\\d+(?:\\.\\d+)?.?"))
                     currentNumber.setText(currentNumber.getText().toString().substring(0, currentNumber.getText().toString().length() - 1));
                 else
                     currentNumber.setText("");
                 numberStroke(op);
                 break;
-
-
-
         }
     }
 
