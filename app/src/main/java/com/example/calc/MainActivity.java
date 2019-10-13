@@ -111,28 +111,28 @@ public class MainActivity extends AppCompatActivity {
             number2.setText(number2.getText().toString()+press);
             result.setText("");
 
-            switch(op.getText().toString()){
-                case "*":
-                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())*Double.parseDouble(number2.getText().toString())));
-                    break;
-                case "/":
-                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())/Double.parseDouble(number2.getText().toString())));
-                    break;
-                case "-":
-                    result.setText(Double.toString(Double.parseDouble(number1.getText().toString())-Double.parseDouble(number2.getText().toString())));
-                    break;
-                 case "+":
-                     result.setText(Double.toString(Double.parseDouble(number1.getText().toString())+Double.parseDouble(number2.getText().toString())));
-                    break;
+            if(!isEmpty(number2)) {
+                switch (op.getText().toString()) {
+                    case "*":
+                        result.setText(Double.toString(Double.parseDouble(number1.getText().toString()) * Double.parseDouble(number2.getText().toString())));
+                        break;
+                    case "/":
+                        result.setText(Double.toString(Double.parseDouble(number1.getText().toString()) / Double.parseDouble(number2.getText().toString())));
+                        break;
+                    case "-":
+                        result.setText(Double.toString(Double.parseDouble(number1.getText().toString()) - Double.parseDouble(number2.getText().toString())));
+                        break;
+                    case "+":
+                        result.setText(Double.toString(Double.parseDouble(number1.getText().toString()) + Double.parseDouble(number2.getText().toString())));
+                        break;
+                }
+            } else {
+
+                result.setText(number1.getText().toString());
+
             }
 
-
-
-
         }
-
-
-
 
     }
 
