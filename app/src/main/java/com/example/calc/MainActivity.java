@@ -2,9 +2,9 @@ package com.example.calc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         switch(v.getTag().toString()){
             case ".":
-                currentNumber.setText(Double.toString(Double.parseDouble(number1.getText().toString())/10));
+                if(!isEmpty(currentNumber) && !currentNumber.getText().toString().contains("."))
+                    currentNumber.setText(currentNumber.getText().toString()+".");
                 break;
             case "%":
                 if(!isEmpty(currentNumber))
@@ -76,7 +77,12 @@ public class MainActivity extends AppCompatActivity {
                 op.setText("");
                 number2.setText("");
                 break;
-
+            case "back":
+                if (isEmpty(number2) && currentNumber == number2)
+                    op.setText("");
+                if(currentNumber.getText().toString().length()>0)
+                    currentNumber.setText(currentNumber.getText().toString().substring(0, currentNumber.getText().toString().length() - 1));
+                break;
 
 
 
@@ -125,6 +131,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void realCalc(View v){
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.miui.calculator");
+        if (launchIntent != null) {
+            startActivity(launchIntent);
+        }
     }
 
 }
