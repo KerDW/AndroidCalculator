@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch(v.getTag().toString()){
             case ".":
-                if(!isEmpty(currentNumber))
+                if(!isEmpty(currentNumber) && !currentNumber.getText().toString().contains("."))
                     currentNumber.setText(currentNumber.getText().toString()+".");
                 break;
             case "%":
