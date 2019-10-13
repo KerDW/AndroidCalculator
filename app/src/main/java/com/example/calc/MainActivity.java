@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         switch(v.getTag().toString()){
             case ".":
-                currentNumber.setText(Double.toString(Double.parseDouble(number1.getText().toString())/10));
+                if(!isEmpty(currentNumber))
+                    currentNumber.setText(currentNumber.getText().toString()+".");
                 break;
             case "%":
                 if(!isEmpty(currentNumber))
@@ -76,7 +77,12 @@ public class MainActivity extends AppCompatActivity {
                 op.setText("");
                 number2.setText("");
                 break;
-
+            case "back":
+                if (isEmpty(number2) && currentNumber == number2)
+                    op.setText("");
+                if(currentNumber.getText().toString().length()>0)
+                    currentNumber.setText(currentNumber.getText().toString().substring(0, currentNumber.getText().toString().length() - 1));
+                break;
 
 
 
