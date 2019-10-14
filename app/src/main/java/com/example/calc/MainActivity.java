@@ -60,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
         switch(v.getTag().toString()){
             case ".":
-                if(!isEmpty(currentNumber) && !currentNumber.getText().toString().contains("."))
-                    currentNumber.setText(currentNumber.getText().toString()+".");
-                else
+                if(currentNumber.getText().toString().matches("\\d+(\\.)?(\\d+)?(\\.)?")){
+                    if(!currentNumber.getText().toString().contains("."))
+                        currentNumber.setText(currentNumber.getText().toString()+".");
+                } else {
                     currentNumber.setText("0.");
+                }
                 break;
             case "%":
                 if(!isEmpty(currentNumber))
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             case "back":
                 if (isEmpty(number2) && currentNumber == number2)
                     op.setText("");
-                if(currentNumber.getText().toString().length()>0 && currentNumber.getText().toString().matches("\\d+(?:\\.\\d+)?.?"))
+                if(currentNumber.getText().toString().length()>0 && currentNumber.getText().toString().matches("\\d+(\\.)?(\\d+)?(\\.)?"))
                     currentNumber.setText(currentNumber.getText().toString().substring(0, currentNumber.getText().toString().length() - 1));
                 else
                     currentNumber.setText("");
@@ -100,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         TextView  op = (TextView) findViewById(R.id.operator);
 
         if(op.getText() == ""){
-            if(number1.toString().matches("\\d+(?:\\.\\d+)?.?"))
+            if(number1.getText().toString().matches("\\d+(\\.)?(\\d+)?(\\.)?"))
                 number1.setText(number1.getText().toString()+press);
             else
                 number1.setText(press);
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             if(isEmpty(number1)){
                 number1.setText("0");
             }
-            if(number2.toString().matches("\\d+(?:\\.\\d+)?.?"))
+            if(number2.getText().toString().matches("\\d+(\\.)?(\\d+)?(\\.)?"))
                 number2.setText(number2.getText().toString()+press);
             else
                 number2.setText(press);
