@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "%":
                 if(!isEmpty(currentNumber))
-                    currentNumber.setText(Double.toString(Double.parseDouble(number1.getText().toString())/100));
+                    currentNumber.setText(Double.toString(Double.parseDouble(currentNumber.getText().toString())/100));
                 break;
             case "C":
                 result.setText("");
@@ -100,14 +100,20 @@ public class MainActivity extends AppCompatActivity {
         TextView  op = (TextView) findViewById(R.id.operator);
 
         if(op.getText() == ""){
-            number1.setText(number1.getText().toString()+press);
+            if(number1.toString().matches("\\d+(?:\\.\\d+)?.?"))
+                number1.setText(number1.getText().toString()+press);
+            else
+                number1.setText(press);
             result.setText(number1.getText());
         } else {
             if(isEmpty(number1)){
                 number1.setText("0");
             }
+            if(number2.toString().matches("\\d+(?:\\.\\d+)?.?"))
+                number2.setText(number2.getText().toString()+press);
+            else
+                number2.setText(press);
 
-            number2.setText(number2.getText().toString()+press);
             result.setText("");
 
             if(!isEmpty(number2)) {
